@@ -54,7 +54,8 @@ function video_embed_privacy_option($name) {
 	return get_option("video-embed-privacy-$name", $defaults[$name]);
 }
 function video_embed_privacy_option_ne($name) {
-	return video_embed_privacy_option($name) ?: video_embed_privacy_defaults()[$name];
+	$result = video_embed_privacy_option($name) ?: video_embed_privacy_defaults()[$name];
+	return apply_filters('get_video_embed_privacy_option', $result, $name);
 }
 
 function video_embed_privacy_available() {
