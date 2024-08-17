@@ -2,8 +2,8 @@
 /*
  * Plugin Name: Embed videos and respect privacy
  * Plugin URI: https://wordpress.org/plugins/video-embed-privacy/
- * Description: Allows you to embed youtube videos without sending data to google on every page view.
- * Version: 2.0
+ * Description: Allows you to embed YouTube or Vimeo videos without sending data to Google/YouTube or Vimeo on every page view.
+ * Version: 2.2
  * Author: Michael Zangl
  * Text Domain: video-embed-privacy
  * Domain Path: /languages
@@ -29,16 +29,16 @@ defined('ABSPATH') or die('No script kiddies please!');
 
 function video_embed_privacy_defaults() {
 	$ytLink = '<a href="' . __('https://www.google.com/intl/en/policies/privacy/', 'video-embed-privacy') . '" target="_blank">'
-			. __('privacy policies of google', 'video-embed-privacy') . '</a>';
+			. __('Google Privacy Policy', 'video-embed-privacy') . '</a>';
 	$vimeoLink = '<a href="' . __('https://vimeo.com/privacy', 'video-embed-privacy') . '" target="_blank">'
-			. __('privacy policies of vimeo', 'video-embed-privacy') . '</a>';
+			. __('Vimeo Privacy Policy', 'video-embed-privacy') . '</a>';
 	return [
 			'show' => __('Show Content', 'video-embed-privacy'),
 			'yt_show' => __('Play Video', 'video-embed-privacy'),
 			'vimeo_show' => __('Play Video', 'video-embed-privacy'),
 			'generic_hint' => __('This content is referring to %s and will be loaded from an external source.', 'video-embed-privacy'),
-			'yt_hint' => sprintf(__('This video will be embedded from Youtube. The %s apply.', 'video-embed-privacy'), $ytLink),
-			'vimeo_hint' => sprintf(__('This video will be embedded from Vimeo. The %s apply.', 'video-embed-privacy'), $vimeoLink),
+			'yt_hint' => sprintf(__('This video will be embedded from YouTube. The %s applies.', 'video-embed-privacy'), $ytLink),
+			'vimeo_hint' => sprintf(__('This video will be embedded from Vimeo. The %s applies.', 'video-embed-privacy'), $vimeoLink),
 			'cache' => 'false',
 			'replace_unknown' => 'true',
 			'key' => ''
@@ -60,7 +60,7 @@ function video_embed_privacy_option_ne($name) {
 function video_embed_privacy_available() {
 	return [
 		'yt' => [
-			'name' => __('Youtube', 'video-embed-privacy'),
+			'name' => __('YouTube', 'video-embed-privacy'),
 			'videoIdMatch' => "=youtube.*embed/([\\w-]+)=i",
 			'textFixer' => function($in) {
 				return preg_replace('~https?\://www\.youtube\.com~', 'https://www.youtube-nocookie.com', $in);
@@ -74,7 +74,7 @@ function video_embed_privacy_available() {
 }
 
 function video_embed_privacy_translate($text, $url, $atts) {
-	$noJsText = esc_html__('Please activate JavaScript to view this video.', 'video-embed-privacy') . '<br/>' . esc_html__('Video-Link', 'video-embed-privacy') . ': <a href="' . htmlspecialchars($url) . '">' . $url . '</a>';
+	$noJsText = esc_html__('Please activate JavaScript to view this video.', 'video-embed-privacy') . '<br/>' . esc_html__('Video link', 'video-embed-privacy') . ': <a href="' . htmlspecialchars($url) . '">' . $url . '</a>';
 	
 	$playText = '<span>' . video_embed_privacy_option_ne('show') . '</span><div class="small"><span>' . sprintf(video_embed_privacy_option_ne('generic_hint'), preg_replace("~\\w+://(.*?)/.*~", "$1", $url)) . '</span></div>';
 	$embedText = $text;
