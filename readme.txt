@@ -1,9 +1,9 @@
 === Embed videos and respect privacy ===
-Contributors: michael.zangl
+Contributors: michael.zangl, bernhard.kabelka
 Tags: youtube, germany, deutschland
 Requires at least: 4.5
-Tested up to: 4.9.4
-Stable tag: 2.2
+Tested up to: 6.6.1
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,3 +71,6 @@ Yes, select the corresponding checkbox in settings.
 = 2.2 =
 * Fix a small bug with the previews
 
+= 2.3 =
+* Add filter for option texts
+* Minor clean-up

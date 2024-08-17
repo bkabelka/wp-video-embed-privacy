@@ -73,8 +73,8 @@ msgstr "Michael Zangl"
 #. translators: plugin header field 'Version'
 #: video-embed-privacy.php:0
 #@ video-embed-privacy
-msgid "2.2"
-msgstr "2.2"
+msgid "2.3"
+msgstr "2.3"
 
 #: video-embed-privacy.php:78
 #@ video-embed-privacy

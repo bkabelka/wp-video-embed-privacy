@@ -3,7 +3,7 @@
  * Plugin Name: Embed videos and respect privacy
  * Plugin URI: https://wordpress.org/plugins/video-embed-privacy/
  * Description: Allows you to embed YouTube or Vimeo videos without sending data to Google/YouTube or Vimeo on every page view.
- * Version: 2.2
+ * Version: 2.3
  * Author: Michael Zangl
  * Text Domain: video-embed-privacy
  * Domain Path: /languages
